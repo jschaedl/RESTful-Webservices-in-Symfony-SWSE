@@ -104,16 +104,4 @@ class Workshop
 
         return $this;
     }
-
-    public function toArray()
-    {
-        return [
-            'identifier' => $this->identifier,
-            'title' => $this->getTitle(),
-            'workshop_date' => $this->getWorkshopDate()->format('Y-m-d'),
-            'attendees' => array_map(function (Attendee $attendee): array {
-                return $attendee->toArray();
-            }, $this->getAttendees()),
-        ];
-    }
 }
