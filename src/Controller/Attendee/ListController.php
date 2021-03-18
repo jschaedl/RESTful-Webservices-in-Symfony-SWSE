@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller\Attendee;
 
-use App\Repository\AttendeeRepository;
+use App\Entity\Attendee;
+use App\Pagination\PaginationFactory;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -13,18 +15,22 @@ use Symfony\Component\Serializer\SerializerInterface;
 final class ListController
 {
     public function __construct(
-        private AttendeeRepository $attendeeRepository,
-        private SerializerInterface $serializer,
+        private PaginationFactory $paginationFactory,
+        private SerializerInterface $serializer
     ) {
     }
 
-    public function __invoke(): Response
+    public function __invoke(Request $request): Response
     {
-        $allAttendees = $this->attendeeRepository->findAll();
+        $attendeeCollection = $this->paginationFactory->createPaginatedCollection(
+            Attendee::class,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('size', 10)
+        );
 
-        $serializedAttendees = $this->serializer->serialize($allAttendees, 'json');
+        $serializedAttendeeCollection = $this->serializer->serialize($attendeeCollection, 'json');
 
-        return new Response($serializedAttendees, Response::HTTP_OK, [
+        return new Response($serializedAttendeeCollection, Response::HTTP_OK, [
             'Content-Type' => 'application/json',
         ]);
     }
