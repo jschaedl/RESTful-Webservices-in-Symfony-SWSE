@@ -10,4 +10,6 @@
 
 ### Solution
 
-...
+- use Symfony's `Route` attribute to configure the route for your controllers
+- use http method `GET`
+- return a JSON representation
