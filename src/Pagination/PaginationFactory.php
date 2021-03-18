@@ -6,27 +6,65 @@ namespace App\Pagination;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class PaginationFactory
 {
     public function __construct(
-        private EntityManagerInterface $entityManager
+        private EntityManagerInterface $entityManager,
+        private UrlGeneratorInterface $urlGenerator,
     ) {
     }
 
-    public function createPaginatedCollection(string $entityClass, int $page = 1, int $size = 10): PaginatedCollection
-    {
+    public function createPaginatedCollection(
+        string $entityClass,
+        int $page,
+        int $size,
+        string $routeName
+    ): PaginatedCollection {
         $repository = $this->entityManager->getRepository($entityClass);
         $query = $repository->createQueryBuilder('u')->getQuery();
 
         $paginator = new Paginator($query);
         $total = count($paginator);
+        $pageCount = ceil($total / $size);
 
         $paginator
             ->getQuery()
             ->setFirstResult($size * ($page - 1))
             ->setMaxResults($size);
 
-        return new PaginatedCollection($paginator->getIterator(), $total);
+        $paginatedCollection = new PaginatedCollection($paginator->getIterator(), $total);
+
+        $paginatedCollection->addLink('self', $this->urlGenerator->generate($routeName, [
+            'page' => $page,
+            'size' => $size,
+        ]));
+
+        if ($page < $pageCount) {
+            $paginatedCollection->addLink('next', $this->urlGenerator->generate($routeName, [
+                'page' => $page + 1,
+                'size' => $size,
+            ]));
+        }
+
+        if ($page > 1) {
+            $paginatedCollection->addLink('prev', $this->urlGenerator->generate($routeName, [
+                'page' => $page - 1,
+                'size' => $size,
+            ]));
+        }
+
+        $paginatedCollection->addLink('first', $this->urlGenerator->generate($routeName, [
+            'page' => 1,
+            'size' => $size,
+        ]));
+
+        $paginatedCollection->addLink('last', $this->urlGenerator->generate($routeName, [
+            'page' => $pageCount,
+            'size' => $size,
+        ]));
+
+        return $paginatedCollection;
     }
 }

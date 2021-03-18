@@ -25,7 +25,8 @@ final class ListController
         $attendeeCollection = $this->paginationFactory->createPaginatedCollection(
             Attendee::class,
             $request->query->getInt('page', 1),
-            $request->query->getInt('size', 10)
+            $request->query->getInt('size', 10),
+            'list_attendee'
         );
 
         $serializedAttendeeCollection = $this->serializer->serialize($attendeeCollection, 'json');
