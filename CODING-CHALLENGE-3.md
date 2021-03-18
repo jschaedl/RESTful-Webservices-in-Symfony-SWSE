@@ -8,4 +8,7 @@
 
 ### Solution
 
-...
+- introduce query params `page` and `size` in your ListControllers
+- use the Doctrine Paginator to paginate the Workshop and Attendee lists
+- implement a `PaginatedCollection` object and add the properties `items`, `total` and `count`
+- implement a `PaginationFactory` to encapsulate your pagination logic
