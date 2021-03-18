@@ -25,7 +25,8 @@ final class ListController
         $workshopCollection = $this->paginationFactory->createPaginatedCollection(
             Workshop::class,
             $request->query->getInt('page', 1),
-            $request->query->getInt('size', 10)
+            $request->query->getInt('size', 10),
+            'list_workshop'
         );
 
         $serializedWorkshopCollection = $this->serializer->serialize($workshopCollection, 'json');

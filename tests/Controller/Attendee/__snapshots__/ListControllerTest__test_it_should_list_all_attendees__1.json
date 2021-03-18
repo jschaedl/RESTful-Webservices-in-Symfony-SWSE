@@ -5,9 +5,28 @@
             "firstname": "Jan",
             "lastname": "Sch\u00e4dlich",
             "email": "jschaedlich@eos-uptrade.de",
-            "workshops": []
+            "workshops": [],
+            "_links": {
+                "self": {
+                    "href": "\/attendees\/da05250a-0af5-40ed-a546-a36db383e2cc"
+                },
+                "collection": {
+                    "href": "\/attendees"
+                }
+            }
         }
     ],
     "total": 1,
-    "count": 1
+    "count": 1,
+    "links": {
+        "self": {
+            "href": "\/attendees?page=1&size=10"
+        },
+        "first": {
+            "href": "\/attendees?page=1&size=10"
+        },
+        "last": {
+            "href": "\/attendees?page=1&size=10"
+        }
+    }
 }

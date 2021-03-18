@@ -3,5 +3,13 @@
     "firstname": "Jan",
     "lastname": "Sch\u00e4dlich",
     "email": "jschaedlich@eos-uptrade.de",
-    "workshops": []
+    "workshops": [],
+    "_links": {
+        "self": {
+            "href": "\/attendees\/470eefeb-6847-4098-9b6c-14be8e09a82e"
+        },
+        "collection": {
+            "href": "\/attendees"
+        }
+    }
 }
