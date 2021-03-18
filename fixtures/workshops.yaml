@@ -1,0 +1,13 @@
+App\Entity\Workshop:
+    workshop_1:
+        __construct: [ '1f91693b-7f5d-47cd-b225-5b5200cc34c3', 'Mastering OOP & Design Patterns', <(new \DateTimeImmutable('2021-04-14'))> ]
+    workshop_2:
+        __construct: [ '032d2ac4-736c-4a5d-8b59-a07a42b7437a', 'Symfony 5: the fast track', <(new \DateTimeImmutable('2021-04-14'))> ]
+    workshop_3:
+        __construct: [ 'a8bfdd2d-072f-4462-8dac-22d6fb92c335', 'Building modular and interactive applications with Symfony UX', <(new \DateTimeImmutable('2021-04-14'))> ]
+    workshop_4:
+        __construct: [ '86b69dcc-e010-45b8-bd76-5a5944bddc98', 'RESTful Webservices in Symfony', <(new \DateTimeImmutable('2021-04-14'))> ]
+    workshop_5:
+        __construct: ['c4918ffb-c909-461a-bf65-248f20dd755e', 'Profiling Symfony & PHP apps', <(new \DateTimeImmutable('2021-04-15'))> ]
+    workshop_6:
+        __construct: [ 'b3ec0bd1-e8e1-4c41-ba54-7fd9e86b1555', 'Symfony Security in Depth', <(new \DateTimeImmutable('2021-04-15'))> ]
