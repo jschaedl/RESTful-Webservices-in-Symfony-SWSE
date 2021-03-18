@@ -1,0 +1,3 @@
+App\Entity\Attendee:
+    attendee_4:
+        __construct: [ 'da05250a-0af5-40ed-a546-a36db383e2cc', 'Jan', 'Schädlich', 'jschaedlich@eos-uptrade.de' ]

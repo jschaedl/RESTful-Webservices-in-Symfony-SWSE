@@ -38,4 +38,7 @@ dev-check: lint php-cs-check                                                   #
 phpunit:                                                                       ## run phpunit
 	$(PHPUNIT_CMD)
 
+phpunit-update-snapshots:                                                      ## run phpunit
+	$(PHPUNIT_CMD) -d --update-snapshots
+
 .PHONY: help dev-init fixtures cache-clear lint-config lint-templates lint-container lint php-cs-check php-cs-fix dev-check phpunit
