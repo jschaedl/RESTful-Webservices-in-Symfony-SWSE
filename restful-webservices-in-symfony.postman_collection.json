@@ -1,0 +1,999 @@
+{
+	"info": {
+		"_postman_id": "6aac8e7b-f810-4d44-9ae6-501fa04b8e0a",
+		"name": "RESTful Webservices in Symfony",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Workshop",
+			"item": [
+				{
+					"name": "/worshops (json)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/workshops",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workshops"
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/worshops (xml)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "text/xml"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/workshops",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workshops"
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/workshops?page=1&size=5 (json)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/workshops?size=10&page=1",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workshops"
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/workshops?page=1&size=5 (xml)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "text/xml"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/workshops?page=1&size=5",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workshops"
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/worshops/{workshopIdentifier} (json)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/workshops/...",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workshops",
+								"..."
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/worshops/{workshopIdentifier} (xml)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "text/xml"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/workshops/...",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workshops",
+								"..."
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/workshops (json)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Test Workshop\",\n\t\"workshop_date\": \"2021-06-16\"\n}"
+						},
+						"url": {
+							"raw": "https://{{host}}/workshops",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workshops"
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/workshops (xml)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\"?>\n<workshop>\n    <title>Test Workshop</title>\n    <workshop_date>2021-06-16</workshop_date>\n</workshop>"
+						},
+						"url": {
+							"raw": "https://{{host}}/workshops",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workshops"
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/workshops/{workshopIdentifier} (json)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Test Workshop\",\n\t\"workshop_date\": \"2021-06-17\"\n}"
+						},
+						"url": {
+							"raw": "https://{{host}}/workshops/...",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workshops",
+								"..."
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/workshops/{workshopIdentifier} (xml)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\"?>\n<workshop>\n    <title>Test Workshop</title>\n    <workshop_date>2021-06-17</workshop_date>\n</workshop>"
+						},
+						"url": {
+							"raw": "https://{{host}}/workshops/...",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workshops",
+								"..."
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/workshops/{workshopIdentifier}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/workshops/...",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workshops",
+								"..."
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/workshops/{workshopIdentifier}/attendee/add/{attendeeIdentifier}",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/workshops/.../attendees/add/...",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workshops",
+								"...",
+								"attendees",
+								"add",
+								"..."
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/workshops/{workshopIdentifier}/attendees/remove/{attendeeIdentifier} (json)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/workshops/.../attendees/remove/...",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workshops",
+								"...",
+								"attendees",
+								"remove",
+								"..."
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Attendee",
+			"item": [
+				{
+					"name": "/attendees (json)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/attendees",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"attendees"
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendees (xml)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "text/xml"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/attendees",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"attendees"
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendees?page=1&size=5 (json)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/attendees?size=1000&page=1",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"attendees"
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "1000"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendees?page=1&size=5 (xml)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "text/xml"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/attendees?page=1&size=5",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"attendees"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								},
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendees/{attendeeIdentifier} (json)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/attendees/...",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"attendees",
+								"..."
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendees/{attendeeIdentifier} (xml)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "text/xml"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/attendees/...",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"attendees",
+								"..."
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendees (json)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\": \"Paul\",\n\t\"lastname\": \"Paulsen\",\n\t\"email\": \"paulpaulsen.de\"\n}"
+						},
+						"url": {
+							"raw": "https://{{host}}/attendees",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"attendees"
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendees (xml)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\"?>\n<attendee>\n    <firstname>Paul</firstname>\n    <lastname>Paulsen</lastname>\n    <email>paul@paulsen.de</email>\n</attendee>"
+						},
+						"url": {
+							"raw": "https://{{host}}/attendees",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"attendees"
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendees/{attendeeIdentifier} (json)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstname\": \"Paul\",\n    \"lastname\": \"Paulsen\",\n    \"email\": \"paul.paulsengmail.de\"\n}"
+						},
+						"url": {
+							"raw": "https://{{host}}/attendees/...",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"attendees",
+								"..."
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendees/{attendeeIdentifier} (xml)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\"?>\n<attendee>\n    <firstname>Paul</firstname>\n    <lastname>Paulsen</lastname>\n    <email>paul.paulsen@gmail.de</email>\n</attendee>"
+						},
+						"url": {
+							"raw": "https://{{host}}/attendees/...",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"attendees",
+								"..."
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendees/{attendeeIdentifier}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/attendees/...",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"attendees",
+								"..."
+							],
+							"query": [
+								{
+									"key": "XDEBUG_SESSION_START",
+									"value": "PHPSTORM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/token (get an admin token)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "api_admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "api_admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{host}}/token",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"token"
+					],
+					"query": [
+						{
+							"key": "XDEBUG_SESSION_START",
+							"value": "PHPSTORM",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/token (get an user token)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "api_user",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "api_user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://{{host}}/token",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"token"
+					],
+					"query": [
+						{
+							"key": "XDEBUG_SESSION_START",
+							"value": "PHPSTORM",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}
