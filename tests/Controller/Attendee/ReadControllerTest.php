@@ -14,7 +14,7 @@ class ReadControllerTest extends ApiTestCase
             __DIR__.'/fixtures/read_attendee.yaml',
         ]);
 
-        $this->browser->request('GET', '/attendees/470eefeb-6847-4098-9b6c-14be8e09a82e');
+        $this->browser->request('GET', '/attendees/470eefeb-6847-4098-9b6c-14be8e09a82e', [], [], ['HTTP_ACCEPT' => 'application/hal+json']);
 
         static::assertResponseIsSuccessful();
 
