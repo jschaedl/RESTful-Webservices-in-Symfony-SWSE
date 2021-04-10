@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Serializer;
 
 use App\Entity\Workshop;
+use App\Negotiation\ContentNegotiator;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\ContextAwareNormalizerInterface;
@@ -15,6 +17,8 @@ final class WorkshopNormalizer implements ContextAwareNormalizerInterface
     public function __construct(
         private ObjectNormalizer $normalizer,
         private UrlGeneratorInterface $urlGenerator,
+        private ContentNegotiator $contentNegotiator,
+        private RequestStack $requestStack,
     ) {
     }
 
@@ -37,7 +41,11 @@ final class WorkshopNormalizer implements ContextAwareNormalizerInterface
 
         $data = $this->normalizer->normalize($object, $format, $context);
 
-        if (\is_array($data)) {
+        if (!is_array($data)) {
+            return $data;
+        }
+
+        if ($this->contentNegotiator->isNegotiatedContentTypeJsonHal()) {
             $data['workshop_date'] = $object->getWorkshopDate()->format('Y-m-d');
 
             $data['_links']['self']['href'] = $this->urlGenerator->generate('read_workshop', [

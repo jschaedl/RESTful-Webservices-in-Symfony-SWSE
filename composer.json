@@ -25,7 +25,8 @@
         "symfony/proxy-manager-bridge": "5.2.*",
         "symfony/serializer": "5.2.*",
         "symfony/yaml": "5.2.*",
-        "webmozart/assert": "^1.10"
+        "webmozart/assert": "^1.10",
+        "willdurand/negotiation": "^3.0"
     },
     "config": {
         "optimize-autoloader": true,
