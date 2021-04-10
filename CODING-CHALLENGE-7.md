@@ -8,4 +8,7 @@
 
 ### Solution
 
-...
+- require the Symfony Validator: `composer require validator`
+- add validation constraints to your Entity properties (NotBlank, Email)
+- use the Validator Service in your `ValueResolver`s
+- for now throw an `BadRequestHttpException` on validation errors
