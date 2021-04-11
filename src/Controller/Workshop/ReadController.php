@@ -6,6 +6,7 @@ namespace App\Controller\Workshop;
 
 use App\Entity\Workshop;
 use App\Negotiation\ContentNegotiator;
+use OpenApi\Annotations as OA;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,6 +21,9 @@ final class ReadController
     ) {
     }
 
+    /**
+     * @OA\Get(tags={"Workshop"})
+     */
     public function __invoke(Request $request, Workshop $workshop): Response
     {
         $serializedWorkshop = $this->serializer->serialize($workshop, $request->getRequestFormat());
