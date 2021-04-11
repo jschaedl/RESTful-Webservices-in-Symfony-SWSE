@@ -1,0 +1,3 @@
+App\Entity\Workshop:
+    workshop_1:
+        __construct: [ 'b0b9f18a-464f-4a29-92f9-01f385dd780d', 'RESTful Webservices in Symfony', <(new \DateTimeImmutable('2021-04-14'))> ]

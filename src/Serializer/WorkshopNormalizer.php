@@ -45,9 +45,9 @@ final class WorkshopNormalizer implements ContextAwareNormalizerInterface
             return $data;
         }
 
-        if ($this->contentNegotiator->isNegotiatedContentTypeJsonHal()) {
-            $data['workshop_date'] = $object->getWorkshopDate()->format('Y-m-d');
+        $data['workshop_date'] = $object->getWorkshopDate()->format('Y-m-d');
 
+        if ($this->contentNegotiator->isNegotiatedContentTypeJsonHal()) {
             $data['_links']['self']['href'] = $this->urlGenerator->generate('read_workshop', [
                 'identifier' => $object->getIdentifier(),
             ]);

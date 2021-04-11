@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\EventListener;
 
+use App\Domain\Exception\AttendeeAlreadyAttendsOtherWorkshopOnThatDateException;
+use App\Domain\Exception\AttendeeLimitReachedException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\ConstraintViolationInterface;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 
 class ExceptionListener implements EventSubscriberInterface
@@ -30,21 +33,31 @@ class ExceptionListener implements EventSubscriberInterface
     {
         $throwable = $event->getThrowable();
 
-        if ($throwable instanceof ValidationFailedException) {
-            $this->handleValidationFailedException($event);
+        if (!($throwable instanceof ValidationFailedException || $throwable instanceof AttendeeAlreadyAttendsOtherWorkshopOnThatDateException || $throwable instanceof AttendeeLimitReachedException)) {
+            return;
         }
-    }
 
-    private function handleValidationFailedException(ExceptionEvent $event)
-    {
-        $throwable = $event->getThrowable();
+        if ($throwable instanceof ValidationFailedException) {
+            $errors = $this->handleConstraintViolations($throwable->getViolations());
+        }
 
-        $errors = [];
-        foreach ($throwable->getViolations() as $violation) {
-            /* @var ConstraintViolationInterface $violation */
-            $errors['errors'][] = [
-                'message' => 'Validation failed.',
-                'detail' => $violation->getPropertyPath().': '.$violation->getMessage(),
+        if ($throwable instanceof AttendeeAlreadyAttendsOtherWorkshopOnThatDateException) {
+            $errors = [
+                'errors' => [
+                    [
+                        'message' => 'Attendee already attends other workshop.',
+                    ],
+                ],
+            ];
+        }
+
+        if ($throwable instanceof AttendeeLimitReachedException) {
+            $errors = [
+                'errors' => [
+                    [
+                        'message' => 'Attendee limit reached.',
+                    ],
+                ],
             ];
         }
 
@@ -53,5 +66,19 @@ class ExceptionListener implements EventSubscriberInterface
         $event->setResponse(
             new Response($serializedErrors, Response::HTTP_BAD_REQUEST)
         );
+    }
+
+    private function handleConstraintViolations(ConstraintViolationListInterface $constraintViolationList): array
+    {
+        $errors = [];
+        foreach ($constraintViolationList as $violation) {
+            /* @var ConstraintViolationInterface $violation */
+            $errors['errors'][] = [
+                'message' => 'Validation failed.',
+                'detail' => $violation->getPropertyPath().': '.$violation->getMessage(),
+            ];
+        }
+
+        return $errors;
     }
 }

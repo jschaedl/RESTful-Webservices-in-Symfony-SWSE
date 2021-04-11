@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Attendee;
+namespace App\Controller\Workshop;
 
-use App\Domain\AttendeeCreator;
-use App\Domain\Model\CreateAttendeeModel;
+use App\Domain\Model\CreateWorkshopModel;
+use App\Domain\WorkshopCreator;
 use App\Negotiation\ContentNegotiator;
 use OpenApi\Annotations as OA;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,11 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
-#[Route('/attendees', name: 'create_attendee', methods: ['POST'])]
+#[Route('/workshops', name: 'create_workshop', methods: ['POST'])]
 final class CreateController
 {
     public function __construct(
-        private AttendeeCreator $attendeeCreator,
+        private WorkshopCreator $workshopCreator,
         private SerializerInterface $serializer,
         private ContentNegotiator $contentNegotiator,
         private UrlGeneratorInterface $urlGenerator,
@@ -26,18 +26,18 @@ final class CreateController
     }
 
     /**
-     * @OA\Post(tags={"Attendee"})
+     * @OA\Post(tags={"Workshop"})
      */
-    public function __invoke(Request $request, CreateAttendeeModel $createAttendeeModel)
+    public function __invoke(Request $request, CreateWorkshopModel $createWorkshopModel)
     {
-        $createdAttendee = $this->attendeeCreator->create($createAttendeeModel);
+        $createdWorkshop = $this->workshopCreator->create($createWorkshopModel);
 
-        $serializedCreatedAttendee = $this->serializer->serialize($createdAttendee, $request->getRequestFormat());
+        $serializedCreatedWorkshop = $this->serializer->serialize($createdWorkshop, $request->getRequestFormat());
 
-        return new Response($serializedCreatedAttendee, Response::HTTP_CREATED, [
+        return new Response($serializedCreatedWorkshop, Response::HTTP_CREATED, [
             'Content-Type' => $this->contentNegotiator->getNegotiatedContentType(),
-            'Location' => $this->urlGenerator->generate('read_attendee', [
-                'identifier' => $createdAttendee->getIdentifier(),
+            'Location' => $this->urlGenerator->generate('read_workshop', [
+                'identifier' => $createdWorkshop->getIdentifier(),
             ], UrlGeneratorInterface::ABSOLUTE_URL),
         ]);
     }

@@ -7,6 +7,9 @@ namespace App\Controller\Workshop;
 use App\Entity\Workshop;
 use App\Negotiation\ContentNegotiator;
 use App\Pagination\PaginationFactory;
+use App\Pagination\WorkshopCollection;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use OpenApi\Annotations as OA;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,9 +25,32 @@ final class ListController
     ) {
     }
 
+    /**
+     * @OA\Get(
+     *      tags={"Workshop"},
+     *      summary="Returns a paginated collection of attendees.",
+     *      description="Returns a paginated collection of attendees.",
+     *      @OA\Parameter(
+     *          name="page",
+     *          in="query",
+     *          description="The field to specify the current page."
+     *      ),
+     *      @OA\Parameter(
+     *          name="size",
+     *          in="query",
+     *          description="The field to specify the current page size."
+     *      ),
+     *     @OA\Response(
+     *          description="Returns a list of attendees.",
+     *          response=200,
+     *          @Model(type=App\Pagination\WorkshopCollection::class)
+     *      )
+     * )
+     */
     public function __invoke(Request $request): Response
     {
         $workshopCollection = $this->paginationFactory->createPaginatedCollection(
+            WorkshopCollection::class,
             Workshop::class,
             $request->query->getInt('page', 1),
             $request->query->getInt('size', 10),

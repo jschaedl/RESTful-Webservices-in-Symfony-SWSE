@@ -6,6 +6,7 @@ namespace App\Controller\Attendee;
 
 use App\Entity\Attendee;
 use App\Negotiation\ContentNegotiator;
+use OpenApi\Annotations as OA;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,6 +21,9 @@ final class ReadController
     ) {
     }
 
+    /**
+     * @OA\Get(tags={"Attendee"})
+     */
     public function __invoke(Request $request, Attendee $attendee): Response
     {
         $serializedAttendee = $this->serializer->serialize($attendee, $request->getRequestFormat());

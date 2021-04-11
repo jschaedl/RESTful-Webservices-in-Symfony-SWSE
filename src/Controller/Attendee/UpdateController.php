@@ -7,6 +7,7 @@ namespace App\Controller\Attendee;
 use App\Domain\AttendeeUpdater;
 use App\Domain\Model\UpdateAttendeeModel;
 use App\Entity\Attendee;
+use OpenApi\Annotations as OA;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,6 +20,9 @@ final class UpdateController
     ) {
     }
 
+    /**
+     * @OA\Put(tags={"Attendee"})
+     */
     public function __invoke(Request $request, Attendee $attendee, UpdateAttendeeModel $updateAttendeeModel)
     {
         $this->attendeeUpdater->update($attendee, $updateAttendeeModel);
