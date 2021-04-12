@@ -14,7 +14,10 @@ class ReadControllerTest extends ApiTestCase
             __DIR__.'/fixtures/read_workshop.yaml',
         ]);
 
-        $this->browser->request('GET', '/workshops/42c77031-05d0-4127-af3e-6b2ae62f487c', [], [], ['HTTP_ACCEPT' => 'application/hal+json']);
+        $this->browser->request('GET', '/workshops/42c77031-05d0-4127-af3e-6b2ae62f487c', [], [], [
+            'HTTP_ACCEPT' => 'application/hal+json',
+            'HTTP_Authorization' => 'Bearer '.$this->getUserToken(),
+        ]);
 
         static::assertResponseIsSuccessful();
 

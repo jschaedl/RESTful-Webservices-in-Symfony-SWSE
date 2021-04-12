@@ -7,12 +7,14 @@ namespace App\Controller\Workshop;
 use App\Entity\Workshop;
 use App\Negotiation\ContentNegotiator;
 use OpenApi\Annotations as OA;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/workshops/{identifier}', name: 'read_workshop', methods: ['GET'])]
+#[IsGranted('ROLE_USER')]
 final class ReadController
 {
     public function __construct(

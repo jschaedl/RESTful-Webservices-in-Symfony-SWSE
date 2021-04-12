@@ -12,7 +12,9 @@ class CreateControllerTest extends ApiTestCase
 {
     public function test_it_should_create_an_attendee(): void
     {
-        $this->browser->request('POST', '/attendees', [], [], [],
+        $this->browser->request('POST', '/attendees', [], [], [
+                'HTTP_Authorization' => 'Bearer '.$this->getUserToken(),
+            ],
             <<<'EOT'
 {
     "firstname": "Paul",

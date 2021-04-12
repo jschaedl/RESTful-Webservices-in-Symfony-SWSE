@@ -16,7 +16,9 @@ class UpdateControllerTest extends ApiTestCase
             __DIR__.'/fixtures/update_workshop.yaml',
         ]);
 
-        $this->browser->request('PUT', '/workshops/b0b9f18a-464f-4a29-92f9-01f385dd780d', [], [], [],
+        $this->browser->request('PUT', '/workshops/b0b9f18a-464f-4a29-92f9-01f385dd780d', [], [], [
+                'HTTP_Authorization' => 'Bearer '.$this->getUserToken(),
+            ],
             <<<'EOT'
 {
     "title": "Test Workshop",
