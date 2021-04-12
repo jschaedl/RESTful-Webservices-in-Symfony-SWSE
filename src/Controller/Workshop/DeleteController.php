@@ -7,11 +7,13 @@ namespace App\Controller\Workshop;
 use App\Domain\WorkshopRemover;
 use App\Entity\Workshop;
 use OpenApi\Annotations as OA;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/workshops/{identifier}', name: 'delete_workshop', methods: ['DELETE'])]
+#[IsGranted('ROLE_ADMIN')]
 class DeleteController
 {
     public function __construct(

@@ -19,7 +19,9 @@ class DeleteControllerTest extends ApiTestCase
             static::$container->get(AttendeeRepository::class)->findOneByIdentifier('b38ab2cf-9f41-4e42-9441-37da67721eac')
         );
 
-        $this->browser->request('DELETE', '/attendees/b38ab2cf-9f41-4e42-9441-37da67721eac');
+        $this->browser->request('DELETE', '/attendees/b38ab2cf-9f41-4e42-9441-37da67721eac', [], [], [
+            'HTTP_Authorization' => 'Bearer '.$this->getAdminToken(),
+        ]);
 
         static::assertNull(
             static::$container->get(AttendeeRepository::class)->findOneByIdentifier('b38ab2cf-9f41-4e42-9441-37da67721eac')

@@ -12,7 +12,9 @@ class CreateControllerTest extends ApiTestCase
 {
     public function test_it_should_create_a_workshop(): void
     {
-        $this->browser->request('POST', '/workshops', [], [], [],
+        $this->browser->request('POST', '/workshops', [], [], [
+                'HTTP_Authorization' => 'Bearer '.$this->getUserToken(),
+            ],
             <<<'EOT'
 {
     "title": "Test Workshop",

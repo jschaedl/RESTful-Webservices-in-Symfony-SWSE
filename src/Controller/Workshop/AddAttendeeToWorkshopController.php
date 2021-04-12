@@ -9,13 +9,15 @@ use App\Entity\Workshop;
 use Doctrine\ORM\EntityManagerInterface;
 use OpenApi\Annotations as OA;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/workshops/{identifier}/attendees/add/{attendee_identifier}', name: 'add_attendee_to_workshop', methods: ['POST'])]
 #[Entity('attendee', expr: 'repository.findOneByIdentifier(attendee_identifier)')]
-class AddAttendeeToWorkshopController
+#[IsGranted('ROLE_USER')]
+final class AddAttendeeToWorkshopController
 {
     public function __construct(
         private EntityManagerInterface $entityManager

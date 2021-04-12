@@ -10,12 +10,14 @@ use App\Pagination\PaginationFactory;
 use App\Pagination\WorkshopCollection;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use OpenApi\Annotations as OA;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/workshops', name: 'list_workshop', methods: ['GET'])]
+#[IsGranted('IS_AUTHENTICATED_ANONYMOUSLY')]
 final class ListController
 {
     public function __construct(

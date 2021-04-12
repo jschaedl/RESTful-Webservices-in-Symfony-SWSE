@@ -7,11 +7,13 @@ namespace App\Controller\Attendee;
 use App\Domain\AttendeeRemover;
 use App\Entity\Attendee;
 use OpenApi\Annotations as OA;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/attendees/{identifier}', name: 'delete_attendee', methods: ['DELETE'])]
+#[IsGranted('ROLE_ADMIN')]
 class DeleteController
 {
     public function __construct(
