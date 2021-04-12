@@ -25,7 +25,7 @@ This is example code that is not production-ready. It is intended for studying a
 ## Installation
 
     # checkout the project
-    $ git clone git@github.com:jschaedl/RESTful-Webservices-in-Symfony-2021-04-14.git
+    $ git clone git@github.com:jschaedl/RESTful-Webservices-in-Symfony.git
 
     # initialize dev environment
     $ make dev-init
