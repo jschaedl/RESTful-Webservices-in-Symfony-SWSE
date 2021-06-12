@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Workshop;
 
 use App\Entity\Workshop;
+use App\Negotiation\ContentNegotiator;
 use App\Pagination\PaginationFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,7 @@ final class ListController
     public function __construct(
         private PaginationFactory $paginationFactory,
         private SerializerInterface $serializer,
+        private ContentNegotiator $contentNegotiator,
     ) {
     }
 
@@ -29,10 +31,10 @@ final class ListController
             'list_workshop'
         );
 
-        $serializedWorkshopCollection = $this->serializer->serialize($workshopCollection, 'json');
+        $serializedWorkshopCollection = $this->serializer->serialize($workshopCollection, $request->getRequestFormat());
 
         return new Response($serializedWorkshopCollection, Response::HTTP_OK, [
-            'Content-Type' => 'application/json',
+            'Content-Type' => $this->contentNegotiator->getNegotiatedContentType(),
         ]);
     }
 }

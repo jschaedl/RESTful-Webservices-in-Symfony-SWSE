@@ -14,7 +14,7 @@ class ListControllerTest extends ApiTestCase
             __DIR__.'/fixtures/list_attendee.yaml',
         ]);
 
-        $this->browser->request('GET', '/attendees');
+        $this->browser->request('GET', '/attendees', [], [], ['HTTP_ACCEPT' => 'application/hal+json']);
 
         static::assertResponseIsSuccessful();
 
