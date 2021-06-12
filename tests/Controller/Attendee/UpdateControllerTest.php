@@ -16,7 +16,9 @@ class UpdateControllerTest extends ApiTestCase
             __DIR__.'/fixtures/update_attendee.yaml',
         ]);
 
-        $this->browser->request('PUT', '/attendees/b38aa3e4-f9de-4dca-aaeb-3ec36a9feb6c', [], [], [],
+        $this->browser->request('PUT', '/attendees/b38aa3e4-f9de-4dca-aaeb-3ec36a9feb6c', [], [], [
+                'HTTP_Authorization' => 'Bearer '.$this->getUserToken(),
+            ],
             <<<'EOT'
 {
     "firstname": "Paul",
