@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Domain\Exception\AttendeeAlreadyAttendsOtherWorkshopOnThatDateException;
+use App\Domain\Exception\AttendeeLimitReachedException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -87,6 +89,14 @@ class Workshop
 
     public function addAttendee(Attendee $attendee): self
     {
+        if (!$attendee->canAttend($this)) {
+            throw new AttendeeAlreadyAttendsOtherWorkshopOnThatDateException();
+        }
+
+        if (25 <= $this->attendees->count()) {
+            throw new AttendeeLimitReachedException();
+        }
+
         if (!$this->attendees->contains($attendee)) {
             $this->attendees->add($attendee);
             $attendee->addWorkshop($this);
@@ -103,5 +113,15 @@ class Workshop
         }
 
         return $this;
+    }
+
+    public function updateTitle(string $title)
+    {
+        $this->title = $title;
+    }
+
+    public function updateWorkshopDate(\DateTimeImmutable $workshopDate)
+    {
+        $this->workshopDate = $workshopDate;
     }
 }

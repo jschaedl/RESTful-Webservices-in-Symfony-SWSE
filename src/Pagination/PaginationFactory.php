@@ -19,6 +19,7 @@ final class PaginationFactory
     }
 
     public function createPaginatedCollection(
+        string $collectionClass,
         string $entityClass,
         int $page,
         int $size,
@@ -36,7 +37,7 @@ final class PaginationFactory
             ->setFirstResult($size * ($page - 1))
             ->setMaxResults($size);
 
-        $paginatedCollection = new PaginatedCollection($paginator->getIterator(), $total);
+        $paginatedCollection = new $collectionClass($paginator->getIterator(), $total);
 
         if ($this->contentNegotiator->isNegotiatedContentTypeJsonHal()) {
             $paginatedCollection->addLink('self', $this->urlGenerator->generate($routeName, [

@@ -18,7 +18,7 @@
     ],
     "total": 1,
     "count": 1,
-    "links": {
+    "_links": {
         "self": {
             "href": "\/attendees?page=1&size=10"
         },
