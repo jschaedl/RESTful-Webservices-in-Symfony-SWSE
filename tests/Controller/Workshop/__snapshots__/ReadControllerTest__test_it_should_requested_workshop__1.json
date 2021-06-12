@@ -2,5 +2,13 @@
     "identifier": "42c77031-05d0-4127-af3e-6b2ae62f487c",
     "title": "RESTful Webservices in Symfony",
     "workshop_date": "2021-04-14",
-    "attendees": []
+    "attendees": [],
+    "_links": {
+        "self": {
+            "href": "\/workshops\/42c77031-05d0-4127-af3e-6b2ae62f487c"
+        },
+        "collection": {
+            "href": "\/workshops"
+        }
+    }
 }
