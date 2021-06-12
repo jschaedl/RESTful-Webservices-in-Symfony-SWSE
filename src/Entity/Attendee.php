@@ -136,14 +136,4 @@ class Attendee
 
         return $this;
     }
-
-    public function toArray()
-    {
-        return [
-            'identifier' => $this->identifier,
-            'firstname' => $this->firstname,
-            'lastname' => $this->lastname,
-            'email' => $this->email,
-        ];
-    }
 }
